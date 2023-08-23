@@ -59,60 +59,53 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    let buttonClicked = false;
+
     document.getElementById('submitQuiz').addEventListener('click', function(){
-        let selectedOptions = document.querySelectorAll('.grid-item.selected');
-        let questions = document.querySelectorAll('.question');
-        let numQuestions = questions.length;
-
-        let types = {
-            'comfort': 0,
-            'silly': 0
-        };
-
-        selectedOptions.forEach(option => {
-            let optionValue = option.getAttribute('data-answer');
-
-            if (optionValue === 'comfort'){
-                types['comfort']++
-            }
-            else if (optionValue === 'silly'){
-                types['silly']++
-            };
-         });  
-
-        let result = getRandomResult(types);
-        displayResults(result);
+        if(!buttonClicked) {
+            buttonClicked = true;
+            submit();
+        }
         
     });
 
-    document.getElementById('submitQuiz').addEventListener('touchend', function(){
-        let selectedOptions = document.querySelectorAll('.grid-item.selected');
-        let questions = document.querySelectorAll('.question');
-        let numQuestions = questions.length;
-
-        let types = {
-            'comfort': 0,
-            'silly': 0
-        };
-
-        selectedOptions.forEach(option => {
-            let optionValue = option.getAttribute('data-answer');
-
-            if (optionValue === 'comfort'){
-                types['comfort']++
-            }
-            else if (optionValue === 'silly'){
-                types['silly']++
-            };
-         });  
-
-        let result = getRandomResult(types);
-        displayResults(result);
-        
+    document.getElementById('submitQuiz').addEventListener('touchstart', function(){
+        if(!buttonClicked) {
+            buttonClicked = true;
+            submit();
+        }
     });
+
+    setTimeout(function() {
+        buttonClicked = false;
+    }, 1000);
 
 });
 
+function submit() {
+    let selectedOptions = document.querySelectorAll('.grid-item.selected');
+    let questions = document.querySelectorAll('.question');
+    let numQuestions = questions.length;
+
+    let types = {
+        'comfort': 0,
+        'silly': 0
+    };
+
+    selectedOptions.forEach(option => {
+        let optionValue = option.getAttribute('data-answer');
+
+        if (optionValue === 'comfort'){
+            types['comfort']++
+        }
+        else if (optionValue === 'silly'){
+            types['silly']++
+        };
+    });  
+
+    let result = getRandomResult(types);
+    displayResults(result);
+}
 
 function checkAllQuestionsSelected(){
     let allQuestions = document.querySelectorAll('.question');
