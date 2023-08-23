@@ -112,7 +112,7 @@ function getRandomResult(types){
                             "You're a very sweet baby hehe my honey is awesome!!",
                             "Don't forget that you're doing great my love! If you need to, please take a break!",
                             "Give me a call if you wanna talk honey! I'm always here for you! <3",
-                            "Looooove you!! Keep your head up my prince!"
+                            "Looooove you!!! Keep your head up my prince!"
                             ];
 
     let sillyMessages = ["Honey (me): *baby noises* Honey (you): *giggles* 'My honey so cute' Honey (me): *blush* 'Thank you!'",
@@ -128,8 +128,8 @@ function getRandomResult(types){
                         ];
     
     /* Edit these with how many highest # gif in the folder*/
-    let numComfortGifs = 22 
-    let numSillyGifs = 22 
+    let numComfortGifs = 24
+    let numSillyGifs = 23
 
     if (types['comfort'] > types['silly']){
         result.message = comfortMessages[Math.floor(Math.random() * comfortMessages.length)]
