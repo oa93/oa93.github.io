@@ -29,6 +29,11 @@
 // });
 
 document.addEventListener('DOMContentLoaded', function() {
+    let password = prompt("Please enter the password:", "");
+    if password( !== "9/3/22") {
+        window.location.href = "https://www.google.com";
+    }
+
     let options = document.querySelectorAll('.grid-item');
     let submitButton = document.getElementById('submitQuiz');
 
