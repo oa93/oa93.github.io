@@ -30,7 +30,8 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     let password = prompt("Please enter the password:", "");
-    if password( !== "9/3/22") {
+    if (password !== "9/3/22") {
+        alert("Incorrect password!")
         window.location.href = "https://www.google.com";
     }
 
@@ -64,26 +65,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    let buttonClicked = false;
-
     document.getElementById('submitQuiz').addEventListener('click', function(){
-        if(!buttonClicked) {
-            buttonClicked = true;
-            submit();
-        }
-        
+        submit();      
     });
 
     document.getElementById('submitQuiz').addEventListener('touchstart', function(){
-        if(!buttonClicked) {
-            buttonClicked = true;
-            submit();
-        }
+        submit();
     });
-
-    setTimeout(function() {
-        buttonClicked = false;
-    }, 1000);
 
 });
 
