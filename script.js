@@ -84,6 +84,33 @@ document.addEventListener('DOMContentLoaded', function() {
         displayResults(result);
         
     });
+
+    document.getElementById('submitQuiz').addEventListener('touchend', function(){
+        let selectedOptions = document.querySelectorAll('.grid-item.selected');
+        let questions = document.querySelectorAll('.question');
+        let numQuestions = questions.length;
+
+        let types = {
+            'comfort': 0,
+            'silly': 0
+        };
+
+        selectedOptions.forEach(option => {
+            let optionValue = option.getAttribute('data-answer');
+
+            if (optionValue === 'comfort'){
+                types['comfort']++
+            }
+            else if (optionValue === 'silly'){
+                types['silly']++
+            };
+         });  
+
+        let result = getRandomResult(types);
+        displayResults(result);
+        
+    });
+
 });
 
 
